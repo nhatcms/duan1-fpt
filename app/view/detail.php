@@ -365,17 +365,17 @@
 
             <!-- Chi tiết sản phẩm -->
             <div class="product-detail-box">
-                <p><strong>Color:</strong> <span id="color-label">Blue</span></p>
-                <div>
+                <p><strong>Giá bán tại MobibeLand:</strong></span></p>
+                <!-- <div>
                     <button class="color-button blue" onclick="changeColor('Blue', this)"></button>
                     <button class="color-button green" onclick="changeColor('Green', this)"></button>
                     <button class="color-button red" onclick="changeColor('Red', this)"></button>
                     <button class="color-button black" onclick="changeColor('Black', this)"></button>
-                </div>
+                </div> -->
                 <div class="product-detail-price">
                     <div>
                         <p class="product-price" style="color: #000000;"><?php echo number_format($product['price']) . "₫"; ?></p>
-                        <del class="product-o-price"><?php echo number_format($product['list_price']); ?>₫</del>
+                        <del class="product-o-price" style="color: red;"><?php echo number_format($product['list_price']); ?>₫</del>
                         <p>(Đã bao gồm VAT)</p>
                     </div>
 

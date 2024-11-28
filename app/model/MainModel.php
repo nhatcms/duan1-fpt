@@ -4,6 +4,7 @@ require_once "ProductModel.php";
 require_once "CategoryModel.php";
 require_once "BannerModel.php";
 require_once "CommentModel.php";
+require_once "OrderModel.php";
 class MainModel
 {
     // public $SUNNY;
@@ -11,7 +12,7 @@ class MainModel
     {
         // $this->SUNNY = $this->dbConnect();
     }
-    public function dbConnect()
+    public static function dbConnect()
     {
         $servername = "localhost";
         $username = "root";

@@ -156,6 +156,9 @@ class AccountModel extends MainModel
 
             // Lưu thông tin người dùng vào session
             $_SESSION['username'] = $user['username'];
+            $_SESSION['name'] = $user['real_name'];
+            $_SESSION['phone'] = $user['phoneNumber'];
+            $_SESSION['email'] = $user['email'];
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['logged_in'] = true;
 

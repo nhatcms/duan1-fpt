@@ -2,8 +2,8 @@
 
 session_start();
 
-require_once __DIR__ . '/app/controller/MainController.php';
-require_once __DIR__ . '/app/model/MainModel.php';
+require_once 'app/controller/MainController.php';
+require_once 'app/model/MainModel.php';
 
 
 
