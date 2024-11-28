@@ -14,9 +14,9 @@ class MainModel
     public function dbConnect()
     {
         $servername = "localhost";
-        $username = "tatnguyentech_mobi";
-        $password = "tatnguyentech_mobi";
-        $dbname = "tatnguyentech_mobi"; // Định nghĩa tên cơ sở dữ liệu
+        $username = "root";
+        $password = "";
+        $dbname = "dam"; // Định nghĩa tên cơ sở dữ liệu
     
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
