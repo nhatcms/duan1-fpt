@@ -1,0 +1,186 @@
+@font-face {
+    font-family: "SSS";
+    src: url(../font/samsung-sharp-sans/samsungsharpsans.otf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: "SSSMedium";
+    src: url(../font/samsung-sharp-sans/samsungsharpsans-medium.otf);
+    font-weight: medium;
+}
+@font-face {
+    font-family: "SSSBold";
+    src: url(../font/samsung-sharp-sans/samsungsharpsans-bold.otf);
+    font-weight: bold;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "SSS", sans-serif;
+}
+.product-container{
+    width: 90%;
+    margin: 20px auto 30px auto ;
+}
+.product-title{
+    display: block;
+    width: 100%;
+}
+.product-title-text{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: "SSSBold", sans-serif;
+}
+
+.product-detail-container{
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+}
+.product-img{
+    width: 50%;
+    margin-right: 20px;
+}
+.product-img img{
+    width: 100%;
+    object-fit: cover;
+    /* height: auto; */
+}
+.product-detail-box{
+    width: 50%;
+    display: block;
+}
+.product-price{
+    font-family: "SSSBold", sans-serif;
+    font-size: 24px;
+    display: block;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+.product-o-price{
+    font-family: "SSSBold", sans-serif;
+    font-size: 20px;
+    display: block;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+.product-detail-box{
+    display: block;
+    width: 100%;
+}
+.product-detail-title{
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "SSSBold", sans-serif;
+    margin-bottom: 10px;
+}
+.comment-container {
+    width: 100%;
+    /* max-width: 600px; */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.comment-box {
+    width: 100%;
+}
+
+.comment-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.comment-content {
+    margin-top: 10px;
+}
+
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.comment-user {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.comment-user-img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-user-name {
+    font-weight: bold;
+}
+
+.comment-content p {
+    margin: 0;
+}
+.related-product-container {
+    width: 100%;
+    /* max-width: 1200px; */
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.related-product-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.related-product-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.related-product-item {
+    width: calc(25% - 20px);
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.related-product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.related-product-img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.related-product-name {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.related-product-price {
+    font-size: 1.1em;
+    color: #e74c3c;
+}
