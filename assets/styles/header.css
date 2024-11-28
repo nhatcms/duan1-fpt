@@ -1,0 +1,111 @@
+@font-face {
+    font-family: "SSS";
+    src: url(../font/samsung-sharp-sans/samsungsharpsans.otf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: "SSSMedium";
+    src: url(../font/samsung-sharp-sans/samsungsharpsans-medium.otf);
+    font-weight: medium;
+}
+@font-face {
+    font-family: "SSSBold";
+    src: url(../font/samsung-sharp-sans/samsungsharpsans-medium.otf);
+    font-weight: medium;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.menu-container {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    align-items: center;
+    width: 100%;
+    background-color: #172226;
+    height: 65px;
+
+}
+
+/* Main */
+.nav-bar {
+    display: flex;
+    width: 90%;
+    font-family: "SSS", sans-serif;
+    /* font-size: 16px; */
+    align-items: center;
+    margin: 0px auto;
+    background-color: #172226;
+    justify-content: space-between;
+    
+}
+
+/* Logo */
+.nav-bar .logo {
+    float: left;
+    display: flex;
+    margin: 10px 0 10px 0px;
+    width: auto;
+    height: 23px;
+    object-fit: cover;
+}
+/* menu */
+.nav-bar .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "SSS", sans-serif;
+    font-size: 15.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.nav-bar .menu .menu-item {
+    margin: 0 10px;
+    padding: 0;
+    color: white;
+    text-decoration: none;
+}
+.nav-bar .menu .menu-item:hover {
+    color: #626265;
+}
+
+/* search form */
+.nav-bar .search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 10px;
+    /* padding: 0; */
+    height: 30px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    /* to right side */
+    margin-left: auto;
+}
+.nav-bar .search-form input {
+    /* height: 100%; */
+    border: none;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    font-family: "SSS", sans-serif;
+    font-size: 16px;
+    padding: 0 10px;
+}
+.nav-bar .search-form input:focus {
+    outline: none;
+}
+.nav-bar .search-form button {
+    border: none;
+    background-color: #f2f2f2;
+    font-size: 16px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.nav-bar .search-form button:focus {
+    outline: none;
+}
+
