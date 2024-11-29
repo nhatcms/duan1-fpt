@@ -69,7 +69,7 @@ if (isset($_SESSION['alert'])) {
                                     <?php foreach ($users as $user): ?>
                                         <tr id="user-<?php echo $user['id']; ?>">
                                             <td>
-                                                <img src="../../assets/img/<?php echo $user['imgPath']; ?>" alt="avatar" width="80">
+                                                <img src="../assets/img/<?php echo $user['imgPath']; ?>" alt="avatar" width="80">
                                             </td>
                                             <td><?php echo htmlspecialchars($user['username']); ?></td>
                                             <td><?php echo htmlspecialchars($user['real_name']); ?></td>

@@ -46,7 +46,7 @@ require './views/sidebar.php'
                     <th>Ngày giờ</th>
                     <th>Trạng thái</th>
                     <th>Hành động</th>
-
+                    <th>Thanh toán</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -57,18 +57,24 @@ require './views/sidebar.php'
                         <td><?= number_format($order["total_amount"]) ?></td>
                         <td><?= $order["date"] ?></td>
                         <td>
-                            <span class="badge bg-<?= $order["status"] == "Processing"
-                                                        ? "primary text-dark"
-                                                        : ($order["status"] == "Delivered"
-                                                            ? "success"
-                                                            : "danger") ?>">
-                                <?= $order["status"] ?>
-                            </span>
+                        <span class="badge bg-<?= $order["status"] == "Pending"
+                        ? "warning" 
+                        : ($order["status"] == "Processing"
+                            ? "primary text-dark" 
+                            : ($order["status"] == "Delivered"
+                                ? "success"
+                                : "danger")) ?>">
+                                  <?= $order["status"] ?>
+                              </span>
+
                         </td>
                         <td>
                             <a href="?action=editOrder&id=<?= $order["id"] ?>" class="btn btn-warning">
                                 <i class="bi bi-eye"></i> Chi tiết
                             </a>
+                        </td>
+                        <td>
+                            <?= $order["payment_method"] ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

@@ -25,10 +25,12 @@ elseif ($action == 'register') {
     AccountController::accountProfileController();
 }elseif ($action == 'changePass') {
     AccountController::changePassController();
+} elseif ($action == 'history') {
+    AccountController::accountHistoryController();
+}elseif ($action == 'orderDetail') {
+    AccountController::orderDetailController();
 }
-// } elseif ($action == 'history') {
-//     AccountController::accountHistoryController();
-// }
+
 //Product controller
 elseif ($action == 'search') {
     MainController::searchController();

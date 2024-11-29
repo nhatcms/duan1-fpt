@@ -1,9 +1,35 @@
 <?php
-if(!isset($_SESSION['logged_in'])) {
+if (!isset($_SESSION['logged_in'])) {
     echo '<script>alert("Bạn cần đăng nhập để thực hiện chức năng này!"); window.location.href = "?action=login";</script>';
     exit;
 }
 
+// Process the form submission if the order button is clicked
+if (isset($_POST['order-btn'])) {
+    // Save the order information to the session before redirecting
+    $_SESSION['order_info'] = [
+        'user_id' => $_SESSION['user_id'],
+        'date' => date('Y-m-d H:i:s', time() + 7 * 3600),
+        'address' => $_POST['address'],
+        'payment_method' => $_POST['payment_method'],
+        'cart' => $_SESSION['cart'],
+        'total' => $tongGioHang + 30000, 
+    ];
+
+    // Check if the payment method is VNPAY and handle accordingly
+    if (isset($_POST['payment_method']) && $_POST['payment_method'] == 'VNPAY') {
+        echo '<script>
+                window.location.href = "./vnpay_php/vnpay_create_payment.php";  // Redirect to VNPAY payment page
+              </script>';
+        exit;
+    }else{
+        // Redirect to the checkout page
+        echo '<script>
+                window.location.href = "?action=checkout";  // Redirect to the checkout page
+              </script>';
+        exit;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +50,7 @@ if(!isset($_SESSION['logged_in'])) {
                 <!-- Form thông tin thanh toán -->
                 <div class="col-lg-8">
                     <h4 class="mb-4">Thông tin thanh toán & giao hàng </h4>
-                    <form action="#" method="POST">
+                    <form action="#" method="POST" id="payment-form">
                         <div class="mb-3">
                             <label for="name" class="form-label">Họ tên người nhận</label>
                             <input type="text" class="form-control" id="name" name="name"
@@ -49,8 +75,7 @@ if(!isset($_SESSION['logged_in'])) {
 
                         <h5 class="mt-4">Phương thức thanh toán</h5>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="payment_method" id="cod" value="COD"
-                                required>
+                            <input class="form-check-input" type="radio" name="payment_method" id="cod" value="COD" required>
                             <label class="form-check-label" for="cod">
                                 Thanh toán khi nhận hàng (COD)
                             </label>
@@ -61,13 +86,12 @@ if(!isset($_SESSION['logged_in'])) {
                                 Thanh toán qua VNPAY
                             </label>
                         </div>
+                        <input type="hidden" name="total_amount" value="<?= $tongGioHang + 30000 ?>">
 
                         <div class="mt-4">
-                            <button type="submit" class="btn btn-primary w-100" name="order-btn">Xác nhận gửi
-                                đơn</button>
+                            <button type="submit" class="btn btn-primary w-100" name="order-btn" id="order-btn">Xác nhận gửi đơn</button>
                         </div>
                     </form>
-
                 </div>
 
                 <!-- Chi tiết đơn hàng -->
@@ -110,11 +134,11 @@ if(!isset($_SESSION['logged_in'])) {
                     <!-- back to cart button -->
                     <a href="?action=cart" class="btn btn-secondary w-100 mt-3">Quay lại giỏ hàng</a>
                 </div>
-
             </div>
         </div>
     </div>
     <?php include 'footer.php'; ?>
+
 </body>
 
 </html>

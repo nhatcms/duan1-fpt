@@ -38,6 +38,7 @@ class OrderController{
             header("Location: ?action=editOrder&id=$id");
             exit;
         }
+        $order_details = $orderModel->getOrderDetail($id);
     
         require_once "views/edit-order.php";
     }

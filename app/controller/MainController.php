@@ -59,46 +59,55 @@ class MainController
             $totalQuantity += $sanPham['quantity'];
             $tongGioHang += $sanPham['price'] * $sanPham['quantity'];
         }
+        
+        $tongGioHang = (int) $tongGioHang;
         if (isset($_POST['order-btn'])) {
-            $Model = new OrderModel();
-            $order = [
-                'user_id' => $_SESSION['user_id'],
-                'total_amount' => $tongGioHang + 30000, // Tổng tiền bao gồm phí vận chuyển
-                'payment_method' => $_POST['payment_method'],
-                'address' => $_POST['address'],         // Địa chỉ nhập từ form
-                'order_code' => strtoupper(substr(md5(uniqid()), 0, 6)), // Tạo mã đơn hàng
-                'status' => 'Pending'               // Trạng thái mặc định
-            ];
+            $paymentMethod = $_POST['payment_method'];
+            if($paymentMethod == 'COD'){
+                $Model = new OrderModel();
+                $order = [
+                    'user_id' => $_SESSION['user_id'],
+                    'total_amount' => $tongGioHang, 
+                    'payment_method' => $_POST['payment_method'],
+                    'address' => $_POST['address'],         
+                    'order_code' => strtoupper(substr(md5(uniqid()), 0, 6)), 
+                    'status' => 'Pending'               
+                ];
+                $order_id = $Model->createOrder($order);
+                if ($order_id) {
+                    
+                    foreach ($_SESSION['cart'] as $sanPham) {
+                        $orderDetail = [
+                            'order_id' => $order_id,
+                            'product_id' => $sanPham['id'],
+                            'quantity' => $sanPham['quantity'],
+                            'price' => $sanPham['price']
+                        ];
+                        OrderModel::createOrderDetail($orderDetail);
+                    }
+                    $AlertModel = new AlertModel();
+                    $AlertModel->showAlertWithRedirect('success', 'Đặt hàng thành công!', 'Cảm ơn bạn đã mua hàng tại cửa hàng chúng tôi!', '?action=history');
+                    unset($_SESSION['cart']);
 
-            // Tạo đơn hàng và lấy ID của đơn hàng vừa tạo
-            $order_id = $Model->createOrder($order);
-
-
-            
-            // $order_id = OrderModel::createOrder($order);
-        
-            if ($order_id) {
-                
-                foreach ($_SESSION['cart'] as $sanPham) {
-                    $orderDetail = [
-                        'order_id' => $order_id,
-                        'product_id' => $sanPham['id'],
-                        'quantity' => $sanPham['quantity'],
-                        'price' => $sanPham['price']
-                    ];
-                    OrderModel::createOrderDetail($orderDetail);
+                    exit;
                 }
-        
+            }else{
                 
-                unset($_SESSION['cart']);
-        
-                
-                $AlertModel = new AlertModel();
-                $AlertModel->showAlertWithRedirect('success', 'Đặt hàng thành công!', 'Cảm ơn bạn đã mua hàng tại cửa hàng chúng tôi!', '?action=history');
-                // exit;
             }
         }
         
         require_once './app/view/pay.php';
+    }
+    public static function orderDetailController()
+    {
+        
+        $order_code = isset($_GET['order_code']) ? $_GET['order_code'] : 0;
+        if ($order_code == 0) {
+            echo '<script>alert("Không tìm thấy đơn hàng!"); window.location.href = "?action=history";</script>';
+            exit;
+        }
+        $order = OrderModel::getOrderByOrderCode($order_code);
+        $order_details = OrderModel::getOrderDetail($order_code);
+        require_once './app/view/order_detail.php';
     }
 }

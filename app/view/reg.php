@@ -1,24 +1,3 @@
-<?php if (isset($_SESSION['isSuccess'])) : ?>
-    <div>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            Swal.fire({
-                icon: '<?php echo isset($_SESSION['isSuccess']) && $_SESSION['isSuccess'] ? "success" : "warning"; ?>',
-                title: 'Thông báo',
-                text: '<?php echo $_SESSION['alert']; ?>',
-                confirmButtonText: 'OK'
-            }).then(() => {
-                // Điều hướng hoặc thực hiện lệnh PHP thông qua AJAX hoặc chuyển hướng
-                <?php if ($_SESSION['isSuccess']) : ?>
-                    window.location.href = '?action=login';
-                <?php endif; ?>
-            });
-        </script>
-    </div>
-<?php 
-unset($_SESSION['alert'], $_SESSION['isSuccess']); 
-?>
-<?php endif; ?>
 
 <!DOCTYPE html>
 <html lang="en">

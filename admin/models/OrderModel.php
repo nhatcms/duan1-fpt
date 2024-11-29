@@ -40,5 +40,17 @@ class OrderModel extends MainModel{
         $stmt->execute();
         return $stmt;
     }
+    public function getOrderDetail($id)
+    {
+        $sql = "SELECT order_details.*, products.name as name, orders.id 
+                FROM order_details 
+                JOIN products ON order_details.product_id = products.id 
+                JOIN orders ON order_details.order_id = orders.id 
+                WHERE orders.id = :id";
+        $stmt = $this->SUNNY->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 }

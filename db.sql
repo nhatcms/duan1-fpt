@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 28, 2024 at 05:23 PM
+-- Generation Time: Nov 29, 2024 at 03:09 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -157,7 +157,7 @@ CREATE TABLE `orders` (
   `id` int NOT NULL,
   `user_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `total_amount` decimal(10,2) NOT NULL,
+  `total_amount` decimal(15,2) NOT NULL,
   `status` enum('Pending','Processing','Completed','Cancelled','Delivered') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Processing',
   `address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `order_code` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -169,104 +169,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `date`, `total_amount`, `status`, `address`, `order_code`, `payment_method`) VALUES
-(1, '5', '2024-11-22 08:01:23', 25550000.00, 'Delivered', '123 Nguyen Trai, Hanoi', 'ZI64A8', NULL),
-(2, '4', '2024-11-22 09:51:07', 28160000.00, 'Cancelled', 'Văn Miếu HN', 'IA15F4', NULL),
-(3, '1', '2024-11-22 09:52:18', 14170000.00, 'Processing', 'hahwdhwahdwa ', 'SD55Y0', NULL),
-(4, '3', '2024-11-22 09:52:35', 34380000.00, 'Processing', 'hahwdhwahdwa ', 'IP04Y4', NULL),
-(35, '1', '2024-11-22 10:00:00', 30400000.00, 'Delivered', 'Address 1', 'MZ56T8', NULL),
-(36, '2', '2024-11-22 10:10:00', 47850000.00, 'Processing', 'Address 2', 'VT14T4', NULL),
-(37, '3', '2024-11-22 10:20:00', 49070000.00, 'Delivered', 'Address 3', 'EK53E8', NULL),
-(38, '4', '2024-11-22 10:30:00', 2780000.00, 'Processing', 'Address 4', 'UJ40D3', NULL),
-(39, '5', '2024-11-22 10:40:00', 12700000.00, 'Delivered', 'Address 5', 'MI17H1', NULL),
-(40, '6', '2024-11-22 10:50:00', 5170000.00, 'Pending', 'Address 612', 'DA63O8', NULL),
-(41, '7', '2024-11-22 11:00:00', 35770000.00, 'Delivered', 'Address 7', 'OI96N6', NULL),
-(42, '1', '2024-11-22 11:10:00', 15340000.00, 'Cancelled', 'Address 8', 'VD00Y5', NULL),
-(43, '2', '2024-11-22 11:20:00', 17370000.00, 'Delivered', 'Address 9', 'WT16T8', NULL),
-(44, '3', '2024-11-22 11:30:00', 39850000.00, 'Cancelled', 'Address 10', 'TJ54Y2', NULL),
-(45, '4', '2024-11-22 11:40:00', 48150000.00, 'Delivered', 'Address 11', 'JC36A2', NULL),
-(46, '5', '2024-11-22 11:50:00', 22210000.00, 'Processing', 'Address 12', 'ZF09F3', NULL),
-(47, '6', '2024-11-22 12:00:00', 14590000.00, 'Delivered', 'Address 13', 'AA18O2', NULL),
-(48, '7', '2024-11-22 12:10:00', 5320000.00, 'Processing', 'Address 14', 'PH59B4', NULL),
-(49, '1', '2024-11-22 12:20:00', 30840000.00, 'Delivered', 'Address 15', 'BZ76A1', NULL),
-(50, '2', '2024-11-22 12:30:00', 39260000.00, 'Processing', 'Address 16', 'WV47J6', NULL),
-(51, '3', '2024-11-22 12:40:00', 4760000.00, 'Cancelled', 'Address 17', 'IP90F0', NULL),
-(52, '4', '2024-11-22 12:50:00', 3010000.00, 'Processing', 'Address 18', 'SJ69C5', NULL),
-(53, '5', '2024-11-22 13:00:00', 48810000.00, 'Delivered', 'Address 19', 'NX87E5', NULL),
-(54, '6', '2024-11-22 13:10:00', 38030000.00, 'Processing', 'Address 20', 'LK74V9', NULL),
-(55, '7', '2024-11-22 13:20:00', 42700000.00, 'Cancelled', 'Address 21', 'LH04G7', NULL),
-(56, '1', '2024-11-22 13:30:00', 49430000.00, 'Processing', 'Address 22', 'YO92D0', NULL),
-(57, '2', '2024-11-22 13:40:00', 20050000.00, 'Delivered', 'Address 23', 'ZS57A8', NULL),
-(58, '3', '2024-11-22 13:50:00', 48980000.00, 'Processing', 'Address 24', 'IZ85Y2', NULL),
-(59, '4', '2024-11-22 14:00:00', 36750000.00, 'Delivered', 'Address 25', 'FM69T8', NULL),
-(60, '5', '2024-11-22 14:10:00', 35830000.00, 'Processing', 'Address 26', 'YD93Z7', NULL),
-(61, '6', '2024-11-22 14:20:00', 18890000.00, 'Delivered', 'Address 27', 'UR14A6', NULL),
-(62, '7', '2024-11-22 14:30:00', 34960000.00, 'Processing', 'Address 28', 'GH78V6', NULL),
-(63, '1', '2024-11-22 14:40:00', 19140000.00, 'Delivered', 'Address 29', 'ZV26J0', NULL),
-(64, '2', '2024-11-22 14:50:00', 38840000.00, 'Processing', 'Address 30', 'FX83G2', NULL),
-(65, '1', '2024-11-22 08:00:00', 37790000.00, 'Processing', 'Address 1', 'LM11H0', NULL),
-(66, '2', '2024-11-22 08:10:00', 22410000.00, 'Delivered', 'Address 2', 'IP98H9', NULL),
-(67, '3', '2024-11-22 08:20:00', 46710000.00, 'Cancelled', 'Address 3', 'AF99F0', NULL),
-(68, '4', '2024-11-22 08:30:00', 18290000.00, 'Processing', 'Address 4', 'VW87X5', NULL),
-(69, '5', '2024-11-22 08:40:00', 48360000.00, 'Delivered', 'Address 5', 'TF87C1', NULL),
-(70, '6', '2024-11-22 08:50:00', 38930000.00, 'Cancelled', 'Address 6', 'SA98I0', NULL),
-(71, '7', '2024-11-22 09:00:00', 48560000.00, 'Processing', 'Address 7', 'MB81Z6', NULL),
-(72, '1', '2024-11-22 09:10:00', 27030000.00, 'Delivered', 'Address 8', 'HK20O5', NULL),
-(73, '2', '2024-11-22 09:20:00', 37470000.00, 'Cancelled', 'Address 9', 'DZ44S2', NULL),
-(74, '3', '2024-11-22 09:30:00', 7260000.00, 'Processing', 'Address 10', 'IU94F8', NULL),
-(75, '4', '2024-11-22 09:40:00', 20900000.00, 'Delivered', 'Address 11', 'KR04B9', NULL),
-(76, '5', '2024-11-22 09:50:00', 32730000.00, 'Cancelled', 'Address 12', 'IW46A0', NULL),
-(77, '6', '2024-11-22 10:00:00', 1960000.00, 'Processing', 'Address 13', 'CJ56T6', NULL),
-(78, '7', '2024-11-22 10:10:00', 8630000.00, 'Delivered', 'Address 14', 'ET34B0', NULL),
-(79, '1', '2024-11-22 10:20:00', 36250000.00, 'Processing', 'Address 15', 'CJ43M2', NULL),
-(80, '2', '2024-11-22 10:30:00', 7350000.00, 'Processing', 'Address 16', 'UF68A5', NULL),
-(81, '3', '2024-11-22 10:40:00', 25030000.00, 'Delivered', 'Address 17', 'XS81J2', NULL),
-(82, '4', '2024-11-22 10:50:00', 4120000.00, 'Cancelled', 'Address 18', 'HP06C5', NULL),
-(83, '5', '2024-11-22 11:00:00', 42480000.00, 'Processing', 'Address 19', 'FO08Z2', NULL),
-(84, '6', '2024-11-22 11:10:00', 3060000.00, 'Delivered', 'Address 20', 'LK61Y1', NULL),
-(85, '7', '2024-11-22 11:20:00', 33880000.00, 'Cancelled', 'Address 21', 'SH25C7', NULL),
-(86, '1', '2024-11-22 11:30:00', 12220000.00, 'Processing', 'Address 22', 'KT55D9', NULL),
-(87, '2', '2024-11-22 11:40:00', 7450000.00, 'Delivered', 'Address 23', 'GM67A7', NULL),
-(88, '3', '2024-11-22 11:50:00', 48590000.00, 'Cancelled', 'Address 24', 'SF04E5', NULL),
-(89, '4', '2024-11-22 12:00:00', 23600000.00, 'Processing', 'Address 25', 'JC35R6', NULL),
-(90, '5', '2024-11-22 12:10:00', 20250000.00, 'Delivered', 'Address 26', 'IP05S7', NULL),
-(91, '6', '2024-11-22 12:20:00', 29440000.00, 'Cancelled', 'Address 27', 'MH98Q5', NULL),
-(92, '7', '2024-11-22 12:30:00', 36480000.00, 'Processing', 'Address 28', 'TB14A6', NULL),
-(93, '1', '2024-11-22 12:40:00', 44080000.00, 'Delivered', 'Address 29', 'FC89A3', NULL),
-(94, '2', '2024-11-22 12:50:00', 11940000.00, 'Cancelled', 'Address 30', 'XH77K9', NULL),
-(95, '3', '2024-11-22 13:00:00', 24480000.00, 'Processing', 'Address 31', 'OX72Z1', NULL),
-(96, '4', '2024-11-22 13:10:00', 36590000.00, 'Delivered', 'Address 32', 'QX47G0', NULL),
-(97, '5', '2024-11-22 13:20:00', 10530000.00, 'Cancelled', 'Address 33', 'MH02B5', NULL),
-(98, '6', '2024-11-22 13:30:00', 39870000.00, 'Processing', 'Address 34', 'OD08Z4', NULL),
-(99, '7', '2024-11-22 13:40:00', 19780000.00, 'Delivered', 'Address 35', 'MZ39L4', NULL),
-(100, '1', '2024-11-22 13:50:00', 27310000.00, 'Delivered', 'Address 36', 'DE46X5', NULL),
-(101, '2', '2024-11-22 14:00:00', 27180000.00, 'Processing', 'Address 37', 'DZ55J0', NULL),
-(102, '3', '2024-11-22 14:10:00', 4000000.00, 'Delivered', 'Address 38', 'GZ24I3', NULL),
-(103, '4', '2024-11-22 14:20:00', 35470000.00, 'Cancelled', 'Address 39', 'XH81G8', NULL),
-(104, '5', '2024-11-22 14:30:00', 17360000.00, 'Processing', 'Address 40', 'QO84U5', NULL),
-(105, '6', '2024-11-22 14:40:00', 28400000.00, 'Delivered', 'Address 41', 'LO44A6', NULL),
-(106, '7', '2024-11-22 14:50:00', 39900000.00, 'Cancelled', 'Address 42', 'JT61S0', NULL),
-(107, '1', '2024-11-22 15:00:00', 15300000.00, 'Delivered', 'Address 43', 'CI36I6', NULL),
-(108, '2', '2024-11-22 15:10:00', 4830000.00, 'Delivered', 'Address 44', 'KY46S5', NULL),
-(109, '3', '2024-11-22 15:20:00', 26240000.00, 'Cancelled', 'Address 45', 'WM80K0', NULL),
-(110, '4', '2024-11-22 15:30:00', 17740000.00, 'Processing', 'Address 46', 'WH70U8', NULL),
-(111, '5', '2024-11-22 15:40:00', 8950000.00, 'Delivered', 'Address 47', 'VO43P8', NULL),
-(112, '6', '2024-11-22 15:50:00', 39550000.00, 'Cancelled', 'Address 48', 'HC53H2', NULL),
-(113, '7', '2024-11-22 16:00:00', 22920000.00, 'Processing', 'Address 49', 'NT27F7', NULL),
-(114, '1', '2024-11-22 16:10:00', 43940000.00, 'Delivered', 'Address 50', 'IG37A7', NULL),
-(115, '6', '2024-11-28 23:47:34', 10520000.00, 'Processing', 'll', 'A09499', 'COD'),
-(116, '6', '2024-11-29 00:00:52', 10520000.00, 'Processing', '03AAYGu2ToWi46gDy1N9xxv2BsaGhPG1MQaXcGCgnyU2_OLyk1wNUarZhBDglrIRo0PSyHrW9DnmGoFogVdhGdrNTSQa_9mU5a_lcdaRfDfJLmOGEGCwuNNPci6QcSRC6A9RcUvKnADY1B1yT0rI5fc5MpgkY6YI-0fM_sJO0xzHVxzU3UibxxjSNq0SdVHNKtk2eEjAPa_NT1xv1XJvo_4IOACzf4SqBTXZ59tXEAcbJV-8Tsmhy0_dOzwcXKKUvR7BOpuHzeowDqRKVdtDnooxzMsAt9chEFxSSQ5flmSg5tLp8wHAqy6SIA-Okhf1jTsCKm2YSe7K9YyarK0Hnmtr9Bp_Kev01X_KSRxhjqpW0BDXQMcpVxI5PnSVDfjsweHCKrwV3JM1Yflidv2Da5WAUf9aG_76UIGfgif4NHt5O31To3di75X7ym0VHimROsUaVXx9I36zA8mzLYwgJBnnFhrQqj5U8xv8JqN_XNiolsiOhY8tdzI1xCuBuoa4Pblmeq-0KDioTNlHhLUcgVFllJtn381VF2XEHR9dMdEyiR6r_rXFLUSiwOj_6cpIaAHbayr3OPFZHiZQf2_y6AzD4wT07nYtX4Ej1ai6O301eVlaMrLTh4FFwEzB--jwaCmEc8VHncz5rj', '10E662', 'COD'),
-(117, '6', '2024-11-29 00:01:43', 10520000.00, 'Pending', '03AAYGu2ToWi46gDy1N9xxv2BsaGhPG1MQaXcGCgnyU2_OLyk1wNUarZhBDglrIRo0PSyHrW9DnmGoFogVdhGdrNTSQa_9mU5a_lcdaRfDfJLmOGEGCwuNNPci6QcSRC6A9RcUvKnADY1B1yT0rI5fc5MpgkY6YI-0fM_sJO0xzHVxzU3UibxxjSNq0SdVHNKtk2eEjAPa_NT1xv1XJvo_4IOACzf4SqBTXZ59tXEAcbJV-8Tsmhy0_dOzwcXKKUvR7BOpuHzeowDqRKVdtDnooxzMsAt9chEFxSSQ5flmSg5tLp8wHAqy6SIA-Okhf1jTsCKm2YSe7K9YyarK0Hnmtr9Bp_Kev01X_KSRxhjqpW0BDXQMcpVxI5PnSVDfjsweHCKrwV3JM1Yflidv2Da5WAUf9aG_76UIGfgif4NHt5O31To3di75X7ym0VHimROsUaVXx9I36zA8mzLYwgJBnnFhrQqj5U8xv8JqN_XNiolsiOhY8tdzI1xCuBuoa4Pblmeq-0KDioTNlHhLUcgVFllJtn381VF2XEHR9dMdEyiR6r_rXFLUSiwOj_6cpIaAHbayr3OPFZHiZQf2_y6AzD4wT07nYtX4Ej1ai6O301eVlaMrLTh4FFwEzB--jwaCmEc8VHncz5rj', '843114', 'COD'),
-(118, '6', '2024-11-29 00:03:22', 10520000.00, 'Pending', '03AAYGu2ToWi46gDy1N9xxv2BsaGhPG1MQaXcGCgnyU2_OLyk1wNUarZhBDglrIRo0PSyHrW9DnmGoFogVdhGdrNTSQa_9mU5a_lcdaRfDfJLmOGEGCwuNNPci6QcSRC6A9RcUvKnADY1B1yT0rI5fc5MpgkY6YI-0fM_sJO0xzHVxzU3UibxxjSNq0SdVHNKtk2eEjAPa_NT1xv1XJvo_4IOACzf4SqBTXZ59tXEAcbJV-8Tsmhy0_dOzwcXKKUvR7BOpuHzeowDqRKVdtDnooxzMsAt9chEFxSSQ5flmSg5tLp8wHAqy6SIA-Okhf1jTsCKm2YSe7K9YyarK0Hnmtr9Bp_Kev01X_KSRxhjqpW0BDXQMcpVxI5PnSVDfjsweHCKrwV3JM1Yflidv2Da5WAUf9aG_76UIGfgif4NHt5O31To3di75X7ym0VHimROsUaVXx9I36zA8mzLYwgJBnnFhrQqj5U8xv8JqN_XNiolsiOhY8tdzI1xCuBuoa4Pblmeq-0KDioTNlHhLUcgVFllJtn381VF2XEHR9dMdEyiR6r_rXFLUSiwOj_6cpIaAHbayr3OPFZHiZQf2_y6AzD4wT07nYtX4Ej1ai6O301eVlaMrLTh4FFwEzB--jwaCmEc8VHncz5rj', 'AC9753', 'COD'),
-(119, '6', '2024-11-29 00:03:55', 10520000.00, 'Pending', '136 Khâm Thiên', 'BF9461', 'COD'),
-(120, '6', '2024-11-29 00:06:40', 10520000.00, 'Pending', '136 Khâm Thiên', 'E6A1C9', 'COD'),
-(121, '6', '2024-11-29 00:06:40', 10520000.00, 'Pending', '136 Khâm Thiên', 'E6A1C9', 'COD'),
-(122, '6', '2024-11-29 00:07:13', 21010000.00, 'Pending', '03AAYGu2ToWi46gDy1N9xxv2BsaGhPG1MQaXcGCgnyU2_OLyk1wNUarZhBDglrIRo0PSyHrW9DnmGoFogVdhGdrNTSQa_9mU5a_lcdaRfDfJLmOGEGCwuNNPci6QcSRC6A9RcUvKnADY1B1yT0rI5fc5MpgkY6YI-0fM_sJO0xzHVxzU3UibxxjSNq0SdVHNKtk2eEjAPa_NT1xv1XJvo_4IOACzf4SqBTXZ59tXEAcbJV-8Tsmhy0_dOzwcXKKUvR7BOpuHzeowDqRKVdtDnooxzMsAt9chEFxSSQ5flmSg5tLp8wHAqy6SIA-Okhf1jTsCKm2YSe7K9YyarK0Hnmtr9Bp_Kev01X_KSRxhjqpW0BDXQMcpVxI5PnSVDfjsweHCKrwV3JM1Yflidv2Da5WAUf9aG_76UIGfgif4NHt5O31To3di75X7ym0VHimROsUaVXx9I36zA8mzLYwgJBnnFhrQqj5U8xv8JqN_XNiolsiOhY8tdzI1xCuBuoa4Pblmeq-0KDioTNlHhLUcgVFllJtn381VF2XEHR9dMdEyiR6r_rXFLUSiwOj_6cpIaAHbayr3OPFZHiZQf2_y6AzD4wT07nYtX4Ej1ai6O301eVlaMrLTh4FFwEzB--jwaCmEc8VHncz5rj', '54D9F7', 'COD'),
-(123, '6', '2024-11-29 00:07:14', 21010000.00, 'Pending', '03AAYGu2ToWi46gDy1N9xxv2BsaGhPG1MQaXcGCgnyU2_OLyk1wNUarZhBDglrIRo0PSyHrW9DnmGoFogVdhGdrNTSQa_9mU5a_lcdaRfDfJLmOGEGCwuNNPci6QcSRC6A9RcUvKnADY1B1yT0rI5fc5MpgkY6YI-0fM_sJO0xzHVxzU3UibxxjSNq0SdVHNKtk2eEjAPa_NT1xv1XJvo_4IOACzf4SqBTXZ59tXEAcbJV-8Tsmhy0_dOzwcXKKUvR7BOpuHzeowDqRKVdtDnooxzMsAt9chEFxSSQ5flmSg5tLp8wHAqy6SIA-Okhf1jTsCKm2YSe7K9YyarK0Hnmtr9Bp_Kev01X_KSRxhjqpW0BDXQMcpVxI5PnSVDfjsweHCKrwV3JM1Yflidv2Da5WAUf9aG_76UIGfgif4NHt5O31To3di75X7ym0VHimROsUaVXx9I36zA8mzLYwgJBnnFhrQqj5U8xv8JqN_XNiolsiOhY8tdzI1xCuBuoa4Pblmeq-0KDioTNlHhLUcgVFllJtn381VF2XEHR9dMdEyiR6r_rXFLUSiwOj_6cpIaAHbayr3OPFZHiZQf2_y6AzD4wT07nYtX4Ej1ai6O301eVlaMrLTh4FFwEzB--jwaCmEc8VHncz5rj', '54D9F7', 'COD'),
-(124, '6', '2024-11-29 00:09:15', 26020000.00, 'Pending', '03AAYGu2ToWi46gDy1N9xxv2BsaGhPG1MQaXcGCgnyU2_OLyk1wNUarZhBDglrIRo0PSyHrW9DnmGoFogVdhGdrNTSQa_9mU5a_lcdaRfDfJLmOGEGCwuNNPci6QcSRC6A9RcUvKnADY1B1yT0rI5fc5MpgkY6YI-0fM_sJO0xzHVxzU3UibxxjSNq0SdVHNKtk2eEjAPa_NT1xv1XJvo_4IOACzf4SqBTXZ59tXEAcbJV-8Tsmhy0_dOzwcXKKUvR7BOpuHzeowDqRKVdtDnooxzMsAt9chEFxSSQ5flmSg5tLp8wHAqy6SIA-Okhf1jTsCKm2YSe7K9YyarK0Hnmtr9Bp_Kev01X_KSRxhjqpW0BDXQMcpVxI5PnSVDfjsweHCKrwV3JM1Yflidv2Da5WAUf9aG_76UIGfgif4NHt5O31To3di75X7ym0VHimROsUaVXx9I36zA8mzLYwgJBnnFhrQqj5U8xv8JqN_XNiolsiOhY8tdzI1xCuBuoa4Pblmeq-0KDioTNlHhLUcgVFllJtn381VF2XEHR9dMdEyiR6r_rXFLUSiwOj_6cpIaAHbayr3OPFZHiZQf2_y6AzD4wT07nYtX4Ej1ai6O301eVlaMrLTh4FFwEzB--jwaCmEc8VHncz5rj', '499A33', 'COD'),
-(125, '6', '2024-11-29 00:09:15', 26020000.00, 'Pending', '03AAYGu2ToWi46gDy1N9xxv2BsaGhPG1MQaXcGCgnyU2_OLyk1wNUarZhBDglrIRo0PSyHrW9DnmGoFogVdhGdrNTSQa_9mU5a_lcdaRfDfJLmOGEGCwuNNPci6QcSRC6A9RcUvKnADY1B1yT0rI5fc5MpgkY6YI-0fM_sJO0xzHVxzU3UibxxjSNq0SdVHNKtk2eEjAPa_NT1xv1XJvo_4IOACzf4SqBTXZ59tXEAcbJV-8Tsmhy0_dOzwcXKKUvR7BOpuHzeowDqRKVdtDnooxzMsAt9chEFxSSQ5flmSg5tLp8wHAqy6SIA-Okhf1jTsCKm2YSe7K9YyarK0Hnmtr9Bp_Kev01X_KSRxhjqpW0BDXQMcpVxI5PnSVDfjsweHCKrwV3JM1Yflidv2Da5WAUf9aG_76UIGfgif4NHt5O31To3di75X7ym0VHimROsUaVXx9I36zA8mzLYwgJBnnFhrQqj5U8xv8JqN_XNiolsiOhY8tdzI1xCuBuoa4Pblmeq-0KDioTNlHhLUcgVFllJtn381VF2XEHR9dMdEyiR6r_rXFLUSiwOj_6cpIaAHbayr3OPFZHiZQf2_y6AzD4wT07nYtX4Ej1ai6O301eVlaMrLTh4FFwEzB--jwaCmEc8VHncz5rj', '499A33', 'COD'),
-(126, '6', '2024-11-29 00:10:16', 76520000.00, 'Pending', '03AAYGu2ToWi46gDy1N9xxv2BsaGhPG1MQaXcGCgnyU2_OLyk1wNUarZhBDglrIRo0PSyHrW9DnmGoFogVdhGdrNTSQa_9mU5a_lcdaRfDfJLmOGEGCwuNNPci6QcSRC6A9RcUvKnADY1B1yT0rI5fc5MpgkY6YI-0fM_sJO0xzHVxzU3UibxxjSNq0SdVHNKtk2eEjAPa_NT1xv1XJvo_4IOACzf4SqBTXZ59tXEAcbJV-8Tsmhy0_dOzwcXKKUvR7BOpuHzeowDqRKVdtDnooxzMsAt9chEFxSSQ5flmSg5tLp8wHAqy6SIA-Okhf1jTsCKm2YSe7K9YyarK0Hnmtr9Bp_Kev01X_KSRxhjqpW0BDXQMcpVxI5PnSVDfjsweHCKrwV3JM1Yflidv2Da5WAUf9aG_76UIGfgif4NHt5O31To3di75X7ym0VHimROsUaVXx9I36zA8mzLYwgJBnnFhrQqj5U8xv8JqN_XNiolsiOhY8tdzI1xCuBuoa4Pblmeq-0KDioTNlHhLUcgVFllJtn381VF2XEHR9dMdEyiR6r_rXFLUSiwOj_6cpIaAHbayr3OPFZHiZQf2_y6AzD4wT07nYtX4Ej1ai6O301eVlaMrLTh4FFwEzB--jwaCmEc8VHncz5rj', '01523E', 'COD'),
-(127, '6', '2024-11-29 00:11:36', 10520000.00, 'Pending', '03AAYGu2ToWi46gDy1N9xxv2BsaGhPG1MQaXcGCgnyU2_OLyk1wNUarZhBDglrIRo0PSyHrW9DnmGoFogVdhGdrNTSQa_9mU5a_lcdaRfDfJLmOGEGCwuNNPci6QcSRC6A9RcUvKnADY1B1yT0rI5fc5MpgkY6YI-0fM_sJO0xzHVxzU3UibxxjSNq0SdVHNKtk2eEjAPa_NT1xv1XJvo_4IOACzf4SqBTXZ59tXEAcbJV-8Tsmhy0_dOzwcXKKUvR7BOpuHzeowDqRKVdtDnooxzMsAt9chEFxSSQ5flmSg5tLp8wHAqy6SIA-Okhf1jTsCKm2YSe7K9YyarK0Hnmtr9Bp_Kev01X_KSRxhjqpW0BDXQMcpVxI5PnSVDfjsweHCKrwV3JM1Yflidv2Da5WAUf9aG_76UIGfgif4NHt5O31To3di75X7ym0VHimROsUaVXx9I36zA8mzLYwgJBnnFhrQqj5U8xv8JqN_XNiolsiOhY8tdzI1xCuBuoa4Pblmeq-0KDioTNlHhLUcgVFllJtn381VF2XEHR9dMdEyiR6r_rXFLUSiwOj_6cpIaAHbayr3OPFZHiZQf2_y6AzD4wT07nYtX4Ej1ai6O301eVlaMrLTh4FFwEzB--jwaCmEc8VHncz5rj', '293CFB', 'COD'),
-(128, '6', '2024-11-29 00:19:34', 78490000.00, 'Pending', '03AAYGu2ToWi46gDy1N9xxv2BsaGhPG1MQaXcGCgnyU2_OLyk1wNUarZhBDglrIRo0PSyHrW9DnmGoFogVdhGdrNTSQa_9mU5a_lcdaRfDfJLmOGEGCwuNNPci6QcSRC6A9RcUvKnADY1B1yT0rI5fc5MpgkY6YI-0fM_sJO0xzHVxzU3UibxxjSNq0SdVHNKtk2eEjAPa_NT1xv1XJvo_4IOACzf4SqBTXZ59tXEAcbJV-8Tsmhy0_dOzwcXKKUvR7BOpuHzeowDqRKVdtDnooxzMsAt9chEFxSSQ5flmSg5tLp8wHAqy6SIA-Okhf1jTsCKm2YSe7K9YyarK0Hnmtr9Bp_Kev01X_KSRxhjqpW0BDXQMcpVxI5PnSVDfjsweHCKrwV3JM1Yflidv2Da5WAUf9aG_76UIGfgif4NHt5O31To3di75X7ym0VHimROsUaVXx9I36zA8mzLYwgJBnnFhrQqj5U8xv8JqN_XNiolsiOhY8tdzI1xCuBuoa4Pblmeq-0KDioTNlHhLUcgVFllJtn381VF2XEHR9dMdEyiR6r_rXFLUSiwOj_6cpIaAHbayr3OPFZHiZQf2_y6AzD4wT07nYtX4Ej1ai6O301eVlaMrLTh4FFwEzB--jwaCmEc8VHncz5rj', 'A06627', 'COD');
+(1, '6', '2024-11-29 07:41:58', 26020000.00, 'Cancelled', '136 Khâm Thiên', 'DDF2EC', 'VNPAY'),
+(2, '6', '2024-11-29 07:56:31', 120010000.00, 'Delivered', '136 Khâm Thiên', '6199D0', 'VNPAY'),
+(3, '6', '2024-11-29 09:22:19', 31500000.00, 'Delivered', '23757 Michele Lock, Suite 992, 29304-7541, Lake Mikelfort, Arizona, United States', '0D91EF', 'VNPAY'),
+(4, '6', '2024-11-29 09:46:27', 10490000.00, 'Pending', '03AAYGu2ToWi46gDy1N9xxv2BsaGhPG1MQaXcGCgnyU2_OLyk1wNUarZhBDglrIRo0PSyHrW9DnmGoFogVdhGdrNTSQa_9mU5a_lcdaRfDfJLmOGEGCwuNNPci6QcSRC6A9RcUvKnADY1B1yT0rI5fc5MpgkY6YI-0fM_sJO0xzHVxzU3UibxxjSNq0SdVHNKtk2eEjAPa_NT1xv1XJvo_4IOACzf4SqBTXZ59tXEAcbJV-8Tsmhy0_dOzwcXKKUvR7BOpuHzeowDqRKVdtDnooxzMsAt9chEFxSSQ5flmSg5tLp8wHAqy6SIA-Okhf1jTsCKm2YSe7K9YyarK0Hnmtr9Bp_Kev01X_KSRxhjqpW0BDXQMcpVxI5PnSVDfjsweHCKrwV3JM1Yflidv2Da5WAUf9aG_76UIGfgif4NHt5O31To3di75X7ym0VHimROsUaVXx9I36zA8mzLYwgJBnnFhrQqj5U8xv8JqN_XNiolsiOhY8tdzI1xCuBuoa4Pblmeq-0KDioTNlHhLUcgVFllJtn381VF2XEHR9dMdEyiR6r_rXFLUSiwOj_6cpIaAHbayr3OPFZHiZQf2_y6AzD4wT07nYtX4Ej1ai6O301eVlaMrLTh4FFwEzB--jwaCmEc8VHncz5rj', '3535C9', 'COD');
 
 -- --------------------------------------------------------
 
@@ -287,17 +193,11 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
-(1, 115, 15, 1, 30000000.00),
-(2, 115, 16, 1, 26000000.00),
-(3, 121, 6, 1, 10490000.00),
-(4, 123, 6, 2, 10490000.00),
-(5, 125, 2, 1, 25990000.00),
-(6, 126, 6, 1, 10490000.00),
-(7, 126, 5, 2, 33000000.00),
-(8, 127, 6, 1, 10490000.00),
-(9, 128, 10, 2, 22990000.00),
-(10, 128, 12, 1, 21990000.00),
-(11, 128, 6, 1, 10490000.00);
+(1, 1, 2, 1, 25990000.00),
+(2, 2, 6, 2, 10490000.00),
+(3, 2, 5, 3, 33000000.00),
+(4, 3, 6, 3, 10490000.00),
+(5, 4, 6, 1, 10490000.00);
 
 -- --------------------------------------------------------
 
@@ -400,14 +300,16 @@ INSERT INTO `users` (`id`, `username`, `real_name`, `email`, `phoneNumber`, `pas
 (3, 'alicecute', 'Đoàn Quang Nam', 'alicejohnson@example.com', '0987717717', 'c4ca4238a0b923820dcc509a6f75849b', '302770-200.png', '2', 1, NULL),
 (4, 'bobisbob', 'Lê Thuỳ Vân', 'bobbrown@example.com', '0987717717', 'c4ca4238a0b923820dcc509a6f75849b', '302770-200.png', '3', 1, NULL),
 (5, 'davidngo', 'Phạm Diệu Linh', 'charliedavis@example.com', '0987717717', '552101d158e48d82eaf1cc191f1477a4', '302770-200.png', '3', 1, NULL),
-(6, 'admin', 'Nguyễn Ngọc Nhật', 'admin@nhatnguyen.tech', '09877177111', 'c4ca4238a0b923820dcc509a6f75849b', '674696eeec7cf.png', '1', 1, NULL),
+(6, 'admin', 'Nguyễn Ngọc Nhật', 'admin@nhatnguyen.tech', '09877177111', 'c4ca4238a0b923820dcc509a6f75849b', '6748a932d8537.jpeg', '1', 1, NULL),
 (7, 'testuser', 'Mật khẩu như tài khoản', 'cmsntvdn@adwaaaaaoa.com', '0999999999', '5d9c68c6c50ed3d02a2fcf54f63993b6', '302770-200.png', '3', 0, NULL),
 (9, 'testusera1', 'Lê Quang Minh Chính Đại', 'nhatnguyencoder@hotmail.com', '0966901092', '9e710d0e06ce10f911569c11104dd2d4', '302770-200.png', '0', 1, NULL),
 (10, 'testuser12', 'Nguyễn Điện Thoại', 'nhatnguyencodaer@hotmail.com', '0966901091', '9e710d0e06ce10f911569c11104dd2d4', '302770-200.png', '0', 1, NULL),
 (11, 'testuser122', 'Lê Văn Laptop', 'nhatnguyencoaadaer@hotmail.com', '0988888881', '9e710d0e06ce10f911569c11104dd2d4', '302770-200.png', '0', 1, NULL),
 (12, 'admin123444', 'Nhặt lá đá ống bơ', 'nhatkoy11118@gmail.com', '0966901087', '9e710d0e06ce10f911569c11104dd2d4', '302770-200.png', '0', 1, NULL),
 (13, 'admin12344', 'Nhat Nguyen', 'nhatkoy1111a8@gmail.com', '0966901082', '9e710d0e06ce10f911569c11104dd2d4', '302770-200.png', '0', 1, NULL),
-(23, 'admin1344', 'Nhat Nguyen', 'Nhataoy1111a8@gmail.com', '0961901082', '3e52c50904349a7538460e368c39e952', '302770-200.png', '0', 1, NULL);
+(23, 'admin1344', 'Nhat Nguyen', 'Nhataoy1111a8@gmail.com', '0961901082', '3e52c50904349a7538460e368c39e952', '302770-200.png', '0', 1, NULL),
+(24, 'root12as', 'Nguyen Nam', 'nhatnguyencod12er@hotmail.com', '0966901064', '3790b0ce8351020c6ea70a21dbf932c8', 'https://cdn-icons-png.flaticon.com/512/6596/6596121.png', '0', 1, NULL),
+(25, 'root12as11', 'Nguyen Nama', 'nhatnguyencod1112er@hotmail.com', '0966901063', '0d61f26cc7dd5333177f446042de8437', 'https://cdn-icons-png.flaticon.com/512/6596/6596121.png', '0', 1, NULL);
 
 --
 -- Indexes for dumped tables
@@ -476,13 +378,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -500,7 +402,7 @@ ALTER TABLE `product_variants`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables
