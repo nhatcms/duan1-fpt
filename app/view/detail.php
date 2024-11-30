@@ -123,6 +123,20 @@
             font-weight: bold;
             margin-bottom: 10px;
         }
+        .comment-suggestions {
+            margin-bottom: 10px;
+        }
+        .suggestion-btn {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        .suggestion-btn:hover {
+            background-color: #e0e0e0;
+        }
+
 
         /* Các sản phẩm liên quan */
         .related-product-container {
@@ -366,12 +380,6 @@
             <!-- Chi tiết sản phẩm -->
             <div class="product-detail-box">
                 <p><strong>Giá bán tại MobibeLand:</strong></span></p>
-                <!-- <div>
-                    <button class="color-button blue" onclick="changeColor('Blue', this)"></button>
-                    <button class="color-button green" onclick="changeColor('Green', this)"></button>
-                    <button class="color-button red" onclick="changeColor('Red', this)"></button>
-                    <button class="color-button black" onclick="changeColor('Black', this)"></button>
-                </div> -->
                 <div class="product-detail-price">
                     <div>
                         <p class="product-price" style="color: #000000;"><?php echo number_format($product['price']) . "₫"; ?></p>
@@ -496,6 +504,13 @@
                         });
 
                         </script>
+                        <script>
+                            // Hàm thêm gợi ý vào ô input
+                            function insertSuggestion(suggestion) {
+                                const input = document.getElementById('comment-content');
+                                input.value = suggestion;
+                            }
+                        </script>
 
 
 
@@ -535,7 +550,7 @@
         <!-- Bình luận -->
         <div class="comment-container">
             <div class="comment-box">
-                <p class="comment-title">Feedback(s) về: <?= $product['name']?></p>
+                <p class="comment-title">Các đánh giá của người dùng về <?= $product['name']?></p>
                 <div>
                     <?php if (count($comments) === 0) { ?>
                         <p>Chưa có bình luận cho sản phẩm này, hãy chia sẻ!</p>
@@ -550,9 +565,19 @@
                     <?php } ?>
                 </div>
             </div>
-            <form action="#" method="post" class="comment-form">
-                <input type="text" name="comment-content" class="content-input" required>
-                <button type="submit" class="comment-btn">Gửi</button>
+            <form action="#" method="POST" class="comment-form">
+                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
+                    <div class="comment-suggestions">
+                        <span>Gợi ý: </span>
+                        <button type="button" class="suggestion-btn" onclick="insertSuggestion('Thời lượng pin rất tốt')">Thời lượng pin rất tốt</button>
+                        <button type="button" class="suggestion-btn" onclick="insertSuggestion('Chất lượng hoàn thiện tốt')">Chất lượng hoàn thiện tốt</button>
+                        <button type="button" class="suggestion-btn" onclick="insertSuggestion('Giá cả hợp lý')">Giá cả hợp lý</button>
+                        <button type="button" class="suggestion-btn" onclick="insertSuggestion('Giao hàng nhanh chóng')">Giao hàng nhanh chóng</button>
+                        <button type="button" class="suggestion-btn" onclick="insertSuggestion('Dịch vụ khách hàng tốt')">Dịch vụ khách hàng tốt</button>
+                    </div>
+                <?php endif; ?>
+                <input type="text" name="comment-content" id="comment-content" class="content-input" required>
+                <button type="submit" class="comment-btn" name="comment-btn">Gửi</button>
             </form>
         </div>
     </div>
@@ -579,4 +604,3 @@
 </body>
 
 </html>
-**Điểm N

@@ -180,7 +180,7 @@ if ($_GET['vnp_ResponseCode'] == '00') {  // Ví dụ: mã phản hồi thành c
     $stmt->execute([
         $_SESSION['user_id'],
         $orderInfo['date'],
-        $orderInfo['total'], 
+        $orderInfo['total']-30000, 
         'Pending',
         $orderInfo['address'],
         strtoupper(substr(md5(uniqid()), 0, 6)),

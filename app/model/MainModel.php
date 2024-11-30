@@ -5,6 +5,7 @@ require_once "CategoryModel.php";
 require_once "BannerModel.php";
 require_once "CommentModel.php";
 require_once "OrderModel.php";
+require_once "MailModel.php";
 class MainModel
 {
     // public $SUNNY;

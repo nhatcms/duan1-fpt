@@ -1,5 +1,4 @@
 <?php
-// require_once 'app/model/MainModel.php';
 $categories = CategoryModel::getAllCategories();
 ?>
 <!DOCTYPE html>

@@ -2,6 +2,7 @@
 // session_start();
 require_once 'MainController.php';
 require_once 'app/model/MainModel.php';
+require_once 'app/model/AlertModel.php';
 
 class ProductController extends MainController
 {
@@ -22,12 +23,25 @@ class ProductController extends MainController
 
         require_once 'app/view/detail.php';
         if (isset($_POST['comment-btn'])) {
-            $content = $_POST['comment-content'];
-            $user_id = $_SESSION['user_id'];
-            $CommentModel->addComment($user_id, $id, $content);
-            echo "<script>window.location.href='?action=product&id=$id'</script>";
+            $alert = new AlertModel();
+		    if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] != true) {
+			    $_SESSION['alert'] = 'Bạn cần đăng nhập để bình luận!';
+			    $_SESSION['isSuccess'] = false;
+            }else{
+                $content = $_POST['comment-content'];
+                $user_id = $_SESSION['user_id'];
+                $CommentModel->addComment($user_id, $id, $content);
+            }
+            if(isset($_SESSION['isSuccess'])){
+                if($_SESSION['isSuccess']){
+                    $alert->showAlertWithRedirect('success', 'Thành công', $_SESSION['alert'], '?action=product&id='.$id);
+                }else{
+                    $alert->showAlert('warning', 'Thất bại', $_SESSION['alert']);
+                }
+                unset($_SESSION['alert']);
+                unset($_SESSION['isSuccess']);
+            }
         }
-        //lấy biến thể của sản phẩm ở bảng product_variants bằng hàm getProductVariantByProductId
     }
 }
 $ProductController = new ProductController();

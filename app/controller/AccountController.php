@@ -2,12 +2,14 @@
 require_once "MainController.php";
 require_once "app/model/MainModel.php";
 require_once "app/model/AlertModel.php";
+require_once "app/model/MailModel.php";
 
 class AccountController extends MainController
 {
     public static function accountRegController($Model)
     {
         $Alert = new AlertModel();
+        $Mail = new MailModel();
         if (isset($_POST["reg-btn"])) {
             $Model = new AccountModel();
             $username = $_POST["username"];
@@ -39,6 +41,77 @@ class AccountController extends MainController
                     "Chúc mừng bạn đăng ký thành công, đăng nhập ngay",
                     "?action=login"
                 );
+                $htmlContent = '
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                margin: 0;
+                                padding: 0;
+                                background-color: #f7f7f7;
+                                color: #333;
+                            }
+                            .email-container {
+                                max-width: 600px;
+                                margin: 20px auto;
+                                background-color: #ffffff;
+                                border-radius: 8px;
+                                overflow: hidden;
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            }
+                            .email-header {
+                                background-color: #4CAF50;
+                                color: white;
+                                text-align: center;
+                                padding: 15px;
+                            }
+                            .email-header img {
+                                max-width: 100px;
+                                margin-bottom: 10px;
+                            }
+                            .email-body {
+                                padding: 20px;
+                            }
+                            .email-body h1 {
+                                font-size: 24px;
+                                margin-bottom: 20px;
+                            }
+                            .email-body p {
+                                font-size: 16px;
+                                line-height: 1.5;
+                                margin-bottom: 20px;
+                            }
+                            .email-footer {
+                                text-align: center;
+                                font-size: 14px;
+                                color: #777;
+                                padding: 10px 20px;
+                                background-color: #f1f1f1;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="email-container">
+                            <div class="email-header">
+                                <h2>Mobile Land!</h2>
+                            </div>
+                            <div class="email-body">
+                                <h1>Chúc mừng bạn đã đăng ký tài khoản thành công!</h1>
+                                <p>Xin chào, </p>
+                                <p>Cảm ơn vì đã trở thành 1 phần của chúng tôi. Email này sẽ được dùng để nhận thông báo, khuyến mãi và khôi phục mật khẩu</p>
+                                <p>Nếu có bất kỳ câu hỏi nào, liên hệ quản trị viên để được hỗ trợ (24/7).</p>
+                            </div>
+                            <div class="email-footer">
+                                &copy; 2024 Mobile Land. All rights reserved.
+                            </div>
+                        </div>
+                    </body>
+                    </html>';
+                $Mail->sendMail($email, "Mobile Land - Đăng ký thành công", $htmlContent);
             } else {
                 $Alert->showAlertWithRedirect(
                     "warning",
@@ -180,17 +253,29 @@ class AccountController extends MainController
             $user = $Model->getUserInfo($id);
 
             if (isset($_POST["change-password-btn"])) {
+                $currentPass = $_POST["currentpass"];
+                $userPass = $user["password"];
                 $password = $_POST["password"];
                 $repassword = $_POST["repassword"];
-
+                if (md5($currentPass) != $userPass) {
+                    AlertModel::showAlertWithRedirect(
+                        "error",
+                        "Thất bại",
+                        "Mật khẩu hiện tại không đúng",
+                        "?action=changePass&id=" . $id
+                    );
+                    die();
+                }
                 if ($password != $repassword) {
                     AlertModel::showAlertWithRedirect(
                         "error",
                         "Thất bại",
-                        "Mật khẩu không khớp",
+                        "Mật khẩu nhập lại không khớp",
                         "?action=changePass&id=" . $id
                     );
+                    die();
                 }
+
 
                 $ok = $Model->validatePassword($password, $repassword);
 
@@ -202,6 +287,80 @@ class AccountController extends MainController
                         "Bạn đã đổi mật khẩu",
                         "?action=changePass&id=" . $id
                     );
+                    $mailContent = "
+                    <!DOCTYPE html>
+                    <html lang='en'>
+                    <head>
+                        <meta charset='UTF-8'>
+                        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                        <title>Password Change Confirmation</title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                background-color: #f9f9f9;
+                                color: #333;
+                                margin: 0;
+                                padding: 0;
+                            }
+                            .email-container {
+                                max-width: 600px;
+                                margin: 20px auto;
+                                background-color: #ffffff;
+                                border-radius: 8px;
+                                overflow: hidden;
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            }
+                            .email-header {
+                                background-color: #4d4d4d;
+                                color: white;
+                                text-align: center;
+                                padding: 20px;
+                            }
+                            .email-body {
+                                padding: 20px;
+                            }
+                            .email-body h1 {
+                                font-size: 22px;
+                                margin-bottom: 20px;
+                            }
+                            .email-body p {
+                                font-size: 16px;
+                                line-height: 1.5;
+                                margin-bottom: 10px;
+                            }
+                            .email-footer {
+                                text-align: center;
+                                font-size: 14px;
+                                color: #777;
+                                padding: 10px;
+                                background-color: #f1f1f1;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class='email-container'>
+                            <div class='email-header'>
+                                <h2>Mobile Land</h2>
+                            </div>
+                            <div class='email-body'>
+                                <h1>Đổi mật khẩu thành công</h1>
+                                <p>Xin chào,</p>
+                                <p>Mật khẩu của bạn đã được đổi thành công. Nếu bạn không phải người thực hiện, lập tức liên hệ QTV để xử lý.</p>
+                                <p>Cảm ơn bạn đã tin tưởng MobileLand.</p>
+                            </div>
+                            <div class='email-footer'>
+                                &copy; 2024 Mobile Land. All rights reserved.
+                            </div>
+                        </div>
+                    </body>
+                    </html>
+                    ";
+                    MailModel::sendMail(
+                        $user["email"],
+                        "Mobile Land - Đổi mật khẩu thành công",
+                        $mailContent
+                    );
+
                 } else {
                     AlertModel::showAlertWithRedirect(
                         "error",

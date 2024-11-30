@@ -134,7 +134,7 @@ if (isset($_SESSION['isSuccess']) && isset($_SESSION['alert'])) {
                                         <td><strong>30.000 đ</strong></td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Tổng tiền:</strong></td>
+                                        <td><strong>Tổng thanh toán:</strong></td>
                                         <td><strong><?= number_format($order['total_amount'] + 30000, 0, ',', '.') ?> đ</strong></td>
                                     </tr>
                                 </table>

@@ -1,24 +1,5 @@
 <!-- chặn nếu reload page dưới 10s 1 lần trong vòng 3 lần liên tiếp -->
-<?php
 
-if (isset($_SESSION['last_time'])) {
-    $time = time() - $_SESSION['last_time'];
-    if ($time < 10) {
-        if (isset($_SESSION['count'])) {
-            $_SESSION['count']++;
-        } else {
-            $_SESSION['count'] = 1;
-        }
-    } else {
-        $_SESSION['count'] = 0;
-    }
-    if ($_SESSION['count'] >= 2) {
-        echo 'Cảnh báo: Cố tình reload trang';
-        die;
-    }
-}
-$_SESSION['last_time'] = time();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
