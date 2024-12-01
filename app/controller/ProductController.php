@@ -19,7 +19,6 @@ class ProductController extends MainController
         $relatedProducts = $Model->getProductByCategoryLimit($product['cate_id'], 4);
         $CommentModel = new CommentModel();
         $comments = $CommentModel->getComments($id);
-        $productVariants = $Model->getProductVariantByProductId($id);
 
         require_once 'app/view/detail.php';
         if (isset($_POST['comment-btn'])) {

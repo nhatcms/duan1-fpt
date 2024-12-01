@@ -52,5 +52,34 @@ class OrderModel extends MainModel{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function countOrder()
+    {
+        $sql = "SELECT COUNT(*) as total FROM orders";
+        $stmt = $this->SUNNY->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return (int) $result['total'];
+    }
+    //lấy tỷ lệ đơn hoàn thành
+    public function getPercentOrder()
+    {
+        $sql = "SELECT COUNT(*) as total FROM orders WHERE status = 'Delivered'";
+        $stmt = $this->SUNNY->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $total = $this->countOrder();
+        if ($total == 0) {
+            return 0;
+        }
+        return round(($result['total'] / $total) * 100, 2);
+    }
+    public function getCompletedOrderRenueve()
+    {
+        $sql = "SELECT SUM(total_amount) as total FROM orders WHERE status = 'Delivered'";
+        $stmt = $this->SUNNY->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    }
 
 }

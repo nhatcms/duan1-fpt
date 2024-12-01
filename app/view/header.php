@@ -12,13 +12,12 @@ $categories = CategoryModel::getAllCategories();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        /* Bố cục thanh điều hướng */
         .nav-bar {
-            background-color: #1e1e1e; /* Màu nền đen xám */
-            padding: 10px 20px; /* Khoảng cách giữa các mục */
+            background-color: #1e1e1e;
+            padding: 10px 20px; 
             display: flex;
-            align-items: center; /* Căn giữa theo chiều dọc */
-            justify-content: space-between; /* Chia đều các phần tử */
+            align-items: center; 
+            justify-content: space-between; 
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -37,27 +36,28 @@ $categories = CategoryModel::getAllCategories();
         }
 
         .menu-item {
-            color: #ffffff; /* Màu chữ trắng */
+            color: #ffffff; 
             text-decoration: none;
             font-size: 16px;
-            margin: 0 15px; /* Khoảng cách giữa các menu */
+            margin: 0 15px; 
             padding: 5px;
         }
 
+
         .menu-item:hover {
-            color: #4ca3ff; /* Màu xanh khi di chuột */
-            border-bottom: 2px solid #4ca3ff; /* Thêm đường viền dưới khi hover */
+            color: #4ca3ff;
+            border-bottom: 2px solid #4ca3ff; 
+            text-decoration: none;
+
         }
 
-        /* Phần bên phải của thanh điều hướng (Login, Cart, Tìm kiếm) */
         .right-section {
             display: flex;
             align-items: center;
-            gap: 20px; /* Khoảng cách giữa các mục */
+            gap: 20px; 
             padding-right: 20px;
         }
 
-        /* Các mục bên phải (login, cart, search) */
         .right-section a {
             color: #ffffff;
             text-decoration: none;

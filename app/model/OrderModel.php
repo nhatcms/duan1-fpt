@@ -86,7 +86,7 @@ class OrderModel extends MainModel
     {
         
         self::dbConnect();
-        $sql = "SELECT SUM(total_amount) as total_spent FROM orders WHERE user_id = :user_id AND status != 'Cancelled'";
+        $sql = "SELECT SUM(total_amount) as total_spent FROM orders WHERE user_id = :user_id AND status = 'Delivered'";
         $stmt = self::$db->prepare($sql);
         $stmt->execute([':user_id' => $user_id]);
         //ép kiểu int

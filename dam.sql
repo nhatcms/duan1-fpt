@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 30, 2024 at 01:16 PM
+-- Generation Time: Dec 01, 2024 at 04:24 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -80,9 +80,7 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `user_id`, `product_id`, `content`, `post_time`) VALUES
-(2, 6, 5, 'a', '2024-11-30 11:00:56'),
-(3, 6, 6, 'ok', '2024-11-30 17:23:29'),
-(4, 6, 15, 'That\'s perfect!', '2024-11-30 17:25:45');
+(5, 6, 5, 'Chất lượng hoàn thiện tốt', '2024-12-01 00:20:14');
 
 -- --------------------------------------------------------
 
@@ -106,22 +104,11 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `date`, `total_amount`, `status`, `address`, `order_code`, `payment_method`) VALUES
-(1, '6', '2024-11-29 07:41:58', 26020000.00, 'Cancelled', '136 Khâm Thiên', 'DDF2EC', 'VNPAY'),
-(2, '6', '2024-11-29 07:56:31', 120010000.00, 'Delivered', '136 Khâm Thiên', '6199D0', 'VNPAY'),
-(3, '6', '2024-11-29 09:22:19', 31500000.00, 'Delivered', '23757 Michele Lock, Suite 992, 29304-7541, Lake Mikelfort, Arizona, United States', '0D91EF', 'VNPAY'),
-(4, '6', '2024-11-29 09:46:27', 10490000.00, 'Pending', '03AAYGu2ToWi46gDy1N9xxv2BsaGhPG1MQaXcGCgnyU2_OLyk1wNUarZhBDglrIRo0PSyHrW9DnmGoFogVdhGdrNTSQa_9mU5a_lcdaRfDfJLmOGEGCwuNNPci6QcSRC6A9RcUvKnADY1B1yT0rI5fc5MpgkY6YI-0fM_sJO0xzHVxzU3UibxxjSNq0SdVHNKtk2eEjAPa_NT1xv1XJvo_4IOACzf4SqBTXZ59tXEAcbJV-8Tsmhy0_dOzwcXKKUvR7BOpuHzeowDqRKVdtDnooxzMsAt9chEFxSSQ5flmSg5tLp8wHAqy6SIA-Okhf1jTsCKm2YSe7K9YyarK0Hnmtr9Bp_Kev01X_KSRxhjqpW0BDXQMcpVxI5PnSVDfjsweHCKrwV3JM1Yflidv2Da5WAUf9aG_76UIGfgif4NHt5O31To3di75X7ym0VHimROsUaVXx9I36zA8mzLYwgJBnnFhrQqj5U8xv8JqN_XNiolsiOhY8tdzI1xCuBuoa4Pblmeq-0KDioTNlHhLUcgVFllJtn381VF2XEHR9dMdEyiR6r_rXFLUSiwOj_6cpIaAHbayr3OPFZHiZQf2_y6AzD4wT07nYtX4Ej1ai6O301eVlaMrLTh4FFwEzB--jwaCmEc8VHncz5rj', '3535C9', 'COD'),
-(8, '6', '2024-11-30 11:04:55', 5520000.00, 'Delivered', '136 Khâm Thiên', '03AF19', 'VNPAY'),
-(9, '6', '2024-11-30 11:10:33', 25990000.00, 'Pending', '136 Cau Dien\r\nnhatcms.id.vn', 'D76C59', 'COD'),
-(10, '6', '2024-11-30 17:25:14', 8990000.00, 'Pending', '136 Khâm Thiên', '9E4A3C', 'COD'),
-(11, '6', '2024-11-30 18:32:14', 33000000.00, 'Pending', '136 Khâm Thiên', 'C6F767', 'COD'),
-(12, '6', '2024-11-30 18:32:47', 7490000.00, 'Pending', '136 Khâm Thiên', '1CBA76', 'COD'),
-(13, '6', '2024-11-30 18:35:16', 9990000.00, 'Pending', '136 Khâm Thiên', '2EEDD4', 'COD'),
-(14, '6', '2024-11-30 18:36:45', 9990000.00, 'Pending', '136 Khâm Thiên', 'B1C8E0', 'COD'),
-(15, '6', '2024-11-30 18:40:04', 10490000.00, 'Pending', '136 Cau Dien\r\nnhatcms.id.vn', '6A11A4', 'COD'),
-(16, '6', '2024-11-30 18:43:11', 26990000.00, 'Pending', '136 Khâm Thiên', '9FD643', 'COD'),
-(17, '6', '2024-11-30 18:49:37', 7490000.00, 'Pending', '136 Khâm Thiên', '2B690E', 'COD'),
-(18, '6', '2024-11-30 18:53:31', 7490000.00, 'Processing', 'Thái Bình', '1545E3', 'COD'),
-(19, '6', '2024-11-30 18:58:13', 10490000.00, 'Pending', '136 Cau Dien', 'F6B898', 'COD');
+(1, '6', '2024-12-01 10:14:33', 33000000.00, 'Delivered', '136 Khâm Thiên', 'DAA6F4', 'VNPAY'),
+(2, '6', '2024-12-01 10:15:30', 25990000.00, 'Delivered', '136 Khâm Thiên', 'ECBD92', 'COD'),
+(3, '6', '2024-12-01 11:12:12', 26990000.00, 'Delivered', 'Hoà Bình', 'FC7ACC', 'COD'),
+(4, '6', '2024-12-01 11:13:20', 14980000.00, 'Delivered', '136 Khâm Thiên', 'E696FD', 'COD'),
+(5, '6', '2024-12-01 11:23:05', 10490000.00, 'Delivered', 'Số nhà 11 ngách 999 ngõ JQK', 'B90778', 'VNPAY');
 
 -- --------------------------------------------------------
 
@@ -142,23 +129,11 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
-(1, 1, 2, 1, 25990000.00),
-(2, 2, 6, 2, 10490000.00),
-(3, 2, 5, 3, 33000000.00),
-(4, 3, 6, 3, 10490000.00),
-(5, 4, 6, 1, 10490000.00),
-(12, 8, 20, 1, 5490000.00),
-(13, 9, 2, 1, 25990000.00),
-(14, 10, 15, 1, 8990000.00),
-(15, 11, 5, 1, 33000000.00),
-(16, 12, 16, 1, 7490000.00),
-(17, 13, 17, 1, 9990000.00),
-(18, 14, 17, 1, 9990000.00),
-(19, 15, 6, 1, 10490000.00),
-(20, 16, 9, 1, 26990000.00),
-(21, 17, 16, 1, 7490000.00),
-(22, 18, 16, 1, 7490000.00),
-(23, 19, 6, 1, 10490000.00);
+(1, 1, 5, 1, 33000000.00),
+(2, 2, 2, 1, 25990000.00),
+(3, 3, 9, 1, 26990000.00),
+(4, 4, 16, 2, 7490000.00),
+(5, 5, 6, 1, 10490000.00);
 
 -- --------------------------------------------------------
 
@@ -208,33 +183,6 @@ INSERT INTO `products` (`id`, `name`, `price`, `list_price`, `img`, `description
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_variants`
---
-
-CREATE TABLE `product_variants` (
-  `id` int NOT NULL,
-  `product_id` int NOT NULL,
-  `color` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `colorName` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `price` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `product_variants`
---
-
-INSERT INTO `product_variants` (`id`, `product_id`, `color`, `colorName`, `price`) VALUES
-(1, 1, '#FF5733', 'Da cam', 100.00),
-(2, 1, '#33FF57', 'Xanh lá', 120.00),
-(3, 2, '#3357FF', '1', 150.00),
-(4, 2, '#FF33A1', '1', 170.00),
-(5, 3, '#A1FF33', '1', 130.00),
-(6, 3, '#5733FF', '1', 140.00),
-(7, 4, '#FF3380', '1', 200.00);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -261,7 +209,7 @@ INSERT INTO `users` (`id`, `username`, `real_name`, `email`, `phoneNumber`, `pas
 (3, 'alicecute', 'Đoàn Quang Nam', 'alicejohnson@example.com', '0987717717', 'c4ca4238a0b923820dcc509a6f75849b', '302770-200.png', '2', 1, NULL),
 (4, 'bobisbob', 'Lê Thuỳ Vân', 'bobbrown@example.com', '0987717717', 'c4ca4238a0b923820dcc509a6f75849b', '302770-200.png', '3', 1, NULL),
 (5, 'davidngo', 'Phạm Diệu Linh', 'charliedavis@example.com', '0987717717', '552101d158e48d82eaf1cc191f1477a4', '302770-200.png', '3', 1, NULL),
-(6, 'admin', 'Nguyễn Ngọc Nhật', 'admin@nhatnguyen.tech', '09877177111', 'c4ca4238a0b923820dcc509a6f75849b', '6748a932d8537.jpeg', '1', 1, NULL),
+(6, 'admin', 'Nguyễn Ngọc Nhật', 'admin@nhatnguyen.tech', '09877177111', 'c4ca4238a0b923820dcc509a6f75849b', '674b44dc3cbd0.jpeg', '1', 1, NULL),
 (7, 'testuser', 'Mật khẩu như tài khoản', 'cmsntvdn@adwaaaaaoa.com', '0999999999', '5d9c68c6c50ed3d02a2fcf54f63993b6', '302770-200.png', '3', 0, NULL),
 (9, 'testusera1', 'Lê Quang Minh Chính Đại', 'nhatnguyencoder@hotmail.com', '0966901092', '9e710d0e06ce10f911569c11104dd2d4', '302770-200.png', '0', 1, NULL),
 (10, 'testuser12', 'Nguyễn Điện Thoại', 'nhatnguyencodaer@hotmail.com', '0966901091', '9e710d0e06ce10f911569c11104dd2d4', '302770-200.png', '0', 1, NULL),
@@ -309,13 +257,6 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `product_variants`
---
-ALTER TABLE `product_variants`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -335,19 +276,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -356,26 +297,10 @@ ALTER TABLE `products`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `product_variants`
---
-ALTER TABLE `product_variants`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `product_variants`
---
-ALTER TABLE `product_variants`
-  ADD CONSTRAINT `product_variants_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

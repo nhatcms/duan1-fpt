@@ -102,4 +102,32 @@ class CateModel extends MainModel
             return false;
         }
     }
+    function getRevenueByCategory() {
+        // Chuẩn bị câu lệnh SQL
+        $sql = "
+            SELECT 
+                c.id AS category_id,
+                c.cate_name AS category_name,
+                FLOOR(SUM(od.quantity * o.total_amount / (
+                    SELECT SUM(quantity) 
+                    FROM order_details 
+                    WHERE order_id = o.id
+                ))) AS revenue
+            FROM orders o
+            INNER JOIN order_details od ON o.id = od.order_id
+            INNER JOIN products p ON od.product_id = p.id
+            INNER JOIN categories c ON p.cate_id = c.id
+            WHERE o.status = 'Delivered'
+            GROUP BY c.id, c.cate_name
+            ORDER BY revenue DESC;
+        ";
+    
+        // Thực thi SQL
+        $stmt = $this->SUNNY->prepare($sql);
+        $stmt->execute();
+    
+        // Trả về kết quả dưới dạng mảng
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
 }

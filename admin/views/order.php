@@ -44,9 +44,9 @@ require './views/sidebar.php'
                     <th>Tên người mua</th>
                     <th>Tổng tiền</th>
                     <th>Ngày giờ</th>
+                    <th>Thanh toán</th>
                     <th>Trạng thái</th>
                     <th>Hành động</th>
-                    <th>Thanh toán</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -56,7 +56,11 @@ require './views/sidebar.php'
                         <td><?= $order["user_name"] ?></td>
                         <td><?= number_format($order["total_amount"]) ?></td>
                         <td><?= $order["date"] ?></td>
-                        <td>
+                        
+						<td>
+                            <?= $order["payment_method"] ?>
+                        </td>
+						<td>
                         <span class="badge bg-<?= $order["status"] == "Pending"
                         ? "warning" 
                         : ($order["status"] == "Processing"
@@ -73,9 +77,7 @@ require './views/sidebar.php'
                                 <i class="bi bi-eye"></i> Chi tiết
                             </a>
                         </td>
-                        <td>
-                            <?= $order["payment_method"] ?>
-                        </td>
+
                     </tr>
                 <?php endforeach; ?>
             </tbody>

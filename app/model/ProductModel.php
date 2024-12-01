@@ -65,12 +65,6 @@ class ProductModel extends MainModel
         $stmt->execute([':name' => '%' . $name . '%']);
         return $stmt->fetchAll();
     }
-    public static function getProductVariantByProductId($id)
-    {
-        $sql = "SELECT * FROM product_variants WHERE product_id = :id";
-        $stmt = self::$SUNNY->prepare($sql);
-        $stmt->execute([':id' => $id]);
-        return $stmt->fetchAll();
-    }
+
 }
 $ProductModel = new ProductModel();

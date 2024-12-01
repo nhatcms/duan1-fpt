@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,7 +60,6 @@
 <body>
 
 <?php
-session_start();
 require_once("./config.php");
 $vnp_SecureHash = $_GET['vnp_SecureHash'];
 $inputData = array();
@@ -141,11 +141,11 @@ $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
         </p>
     </div>
 
-    <form action="../?action=history" method="post" class="text-center">
+    <form action="mail.php" method="post" class="text-center">
         <?php if ($_GET['vnp_ResponseCode'] == '00') { ?>
             <button type="submit" class="btn btn-home btn-lg" name="order-btn">Xem lịch sử đơn hàng</button>
         <?php } else { ?>
-            <a href="../?action=cart" class="btn btn-home btn-lg">Quay về giỏ hàng</a>
+            <a href="mail.php" class="btn btn-home btn-lg">Quay về giỏ hàng</a>
         <?php } ?>
     </form>
 
@@ -164,6 +164,7 @@ $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
 // Kiểm tra kết quả thanh toán từ VNPAY (Giả sử bạn đã nhận được dữ liệu từ VNPAY)
 if ($_GET['vnp_ResponseCode'] == '00') {  // Ví dụ: mã phản hồi thành công từ VNPAY
     // Lấy thông tin đơn hàng từ session
+    session_start();
     $orderInfo = $_SESSION['order_info'];
     
     // Kết nối cơ sở dữ liệu
@@ -176,6 +177,7 @@ if ($_GET['vnp_ResponseCode'] == '00') {  // Ví dụ: mã phản hồi thành c
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Thêm đơn hàng vào bảng orders
+    $orderInfo['order_code'] =  strtoupper(substr(md5(uniqid()), 0, 6));
     $stmt = $pdo->prepare("INSERT INTO orders (user_id, date, total_amount, status, address, order_code, payment_method) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([
         $_SESSION['user_id'],
@@ -183,7 +185,7 @@ if ($_GET['vnp_ResponseCode'] == '00') {  // Ví dụ: mã phản hồi thành c
         $orderInfo['total']-30000, 
         'Pending',
         $orderInfo['address'],
-        strtoupper(substr(md5(uniqid()), 0, 6)),
+        $orderInfo['order_code'],
         $orderInfo['payment_method']
     ]);
 
@@ -201,9 +203,113 @@ if ($_GET['vnp_ResponseCode'] == '00') {  // Ví dụ: mã phản hồi thành c
 
 
     // Xóa giỏ hàng sau khi thanh toán thành công
-    unset($_SESSION['cart']);
-    unset($_SESSION['order_info']);
-    
-    // echo '<script>alert("Thanh toán thành công!"); window.location.href = "thank_you.php";</script>';
+    //set session email, subject, message
+    $_SESSION['subject'] = "Xác nhận đơn hàng tại Mobileland";
+    $_SESSION['message'] = "
+    <!DOCTYPE html>
+    <html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f9f9f9;
+                color: #333;
+                margin: 0;
+                padding: 0;
+            }
+            .email-container {
+                max-width: 600px;
+                margin: 20px auto;
+                background-color: #ffffff;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            .email-header {
+                background-color: #4d4d4d;
+                color: white;
+                text-align: center;
+                padding: 15px;
+            }
+            .email-body {
+                padding: 20px;
+            }
+            .email-body h1 {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+            .email-body p {
+                font-size: 16px;
+                line-height: 1.5;
+                margin-bottom: 10px;
+            }
+            .order-details {
+                margin-top: 20px;
+                border-top: 1px solid #ddd;
+                padding-top: 15px;
+            }
+            .order-details table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            .order-details th,
+            .order-details td {
+                text-align: left;
+                padding: 8px 0;
+            }
+            .order-details th {
+                font-weight: bold;
+                color: #555;
+            }
+            .email-footer {
+                text-align: center;
+                font-size: 14px;
+                color: #777;
+                padding: 10px;
+                background-color: #f1f1f1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='email-container'>
+            <div class='email-header'>
+                <h2>Mobile Land</h2>
+            </div>
+            <div class='email-body'>
+                <h1>Xác Nhận Đơn Hàng</h1>
+                <p>Cảm ơn bạn đã tin tưởng. Đơn hàng của bạn đã được tạo thành công</p>
+                <p>Dưới đây là thông tin cơ bản về đơn hàng: </p>
+                <div class='order-details'>
+                    <table>
+                        <tr>
+                            <th>Mã đơn:</th>
+                            <td>{$orderInfo['order_code']}</td>
+                        </tr>
+                        <tr>
+                            <th>Số tiền:</th>
+                            <td>" . number_format($orderInfo['total'], 0, ',', '.') . " VND</td>
+                        </tr>
+                        <tr>
+                            <th>Phương thức thanh toán:</th>
+                            <td>Thanh toán khi nhận hàng (COD)</td>
+                        </tr>
+                        <tr>
+                            <th>Địa chỉ giao hàng:</th>
+                            <td>{$orderInfo['address']}</td>
+                        </tr>
+                    </table>
+                </div>
+                <p>Nếu có bất kỳ thắc mắc nào vui lòng cung cấp mã đơn cho QTV!</p>
+            </div>
+            <div class='email-footer'>
+                &copy; 2024 Mobile Land. All rights reserved.
+            </div>
+        </div>
+    </body>
+    </html>
+    ";
+
 }
 ?>

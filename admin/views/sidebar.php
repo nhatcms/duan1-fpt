@@ -35,7 +35,7 @@
                      </a>
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a href="<?php 'http://localhost/Cao%20%c4%91%e1%ba%b3ng%20FPT%20Polytechnic/Fall%202024/duan11/admin/?action=cate#' ?>" class="nav-link">
+                             <a href="<?php '?action=dashboard' ?>" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Dashboard</p>
                              </a>
