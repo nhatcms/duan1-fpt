@@ -71,8 +71,8 @@ if (isset($_SESSION['alert'])) {
                                             echo "<td>";
                                             // view button
                                             // echo "<a href=../?action=category&id={$cate['id']} class='btn btn-success btn-sm custom-btn'>View</a>";
-                                            echo "<a href=?action=editCate&id={$cate['id']} class='btn btn-info btn-sm custom-btn'>Edit</a>";
-                                            echo "<button class='btn btn-danger btn-sm custom-btn' onclick='deleteCate({$cate['id']}, \"{$randomId}\")'>Delete</button>";
+                                            echo "<a href=?action=editCate&id={$cate['id']} class='btn btn-info btn-sm custom-btn'>Sửa</a>";
+                                            echo "<button class='btn btn-danger btn-sm custom-btn' onclick='deleteCate({$cate['id']}, \"{$randomId}\")'>Xoá</button>";
                                             echo "</td>";
                                             echo "</tr>";
                                         }

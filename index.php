@@ -13,6 +13,9 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'home';
 if ($action == 'home') {
     MainController::homeController();
 }
+elseif($action=='about'){
+    MainController::aboutController();
+}
 
 //Account controller
 elseif ($action == 'register') {

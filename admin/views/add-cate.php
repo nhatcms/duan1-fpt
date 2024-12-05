@@ -41,13 +41,13 @@ require './views/sidebar.php'
               <form action="?action=addCate" method="POST">
                 <div class="card-body">
                   <div class="form-group"> 
-                    <label for="cate_name" class="form-label">Category name</label>
+                    <label for="cate_name" class="form-label">Tên danh mục</label>
                     <input type="text" class="form-control" id="cate_name" name="cate_name" required>
                   </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="add-cate-btn">Save</button>
+                  <button type="submit" class="btn btn-primary" name="add-cate-btn">Lưu</button>
                 </div>
               </form>    </form>
             </div>

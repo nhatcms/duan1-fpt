@@ -146,7 +146,7 @@ $categories = CategoryModel::getAllCategories();
     <div class="menu-container">
         <div class="nav-bar">
             <!-- Logo -->
-            <a href="?action=home"><img src="assets/img/logo_1222.jpg" alt="Logo" class="logo"></a>
+            <a href="?action=home"><img src="./assets/img/logo_1222.jpg" alt="Logo" class="logo"></a>
             <!-- Menu -->
             <nav class="menu">
                 <?php
@@ -154,7 +154,7 @@ $categories = CategoryModel::getAllCategories();
                     echo '<a href="?action=category&id=' . $category['id'] . '" class="menu-item">' . $category['cate_name'] . '</a>';
                 }
                 ?>
-                <a href="?action=tintuc" class="menu-item">Tin tức</a>
+                <a href="?action=about" class="menu-item">Giới thiệu</a>
                 <!-- <a href="?action=about" class="menu-item">Giới thiệu</a> -->
             </nav>
 

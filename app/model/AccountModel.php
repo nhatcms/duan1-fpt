@@ -26,8 +26,7 @@ class AccountModel extends MainModel
             ':phone' => $phone,
             ':realname' => $realname
         ]);
-        $_SESSION['isSuccess'] = true;
-        $_SESSION['alert'] = 'Đăng ký thành công, mời đăng nhập';
+
         return true;
     }
 

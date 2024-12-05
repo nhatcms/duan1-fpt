@@ -37,7 +37,6 @@
             unset($_SESSION['error']);
         }
         ?>
-
         <h2 class="text-center">Đăng nhập quản trị</h2>
         <form action="?action=login" method="post">
             <div class="mb-3">
@@ -50,9 +49,7 @@
             </div>
             <button type="submit" class="btn btn-dark w-100" name="log-btn">Truy cập</button>
         </form>
-        <div class="text-center mt-3">
-            <p>Tài khoản mặc định: admin | admin</p>
-        </div>
+
     </div>
 
 

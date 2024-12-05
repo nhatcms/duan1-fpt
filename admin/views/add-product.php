@@ -27,7 +27,7 @@ if (!empty($errors)) {
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Quản lí danh mục sản phẩm</h1>
+                    <h1>Quản lí sản phẩm</h1>
                 </div>
                 <!-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -88,18 +88,18 @@ if (!empty($errors)) {
                                     <label for="isActive" class="form-label">Trạng thái</label>
                                     <select class="form-select" id="isActive" name="isActive">
                                         <option value="1" <?= (isset($oldInput['isActive']) && $oldInput['isActive'] == '1') ? 'selected' : '' ?>>
-                                            Active
+                                            Đang bán
                                         </option>
                                         <option value="0" <?= (isset($oldInput['isActive']) && $oldInput['isActive'] == '0') ? 'selected' : '' ?>>
-                                            Inactive
+                                            Ngừng bán
                                         </option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="image" class="form-label">Image</label>
+                                    <label for="image" class="form-label">Ảnh sản phẩm</label>
                                     <input type="file" class="form-control" id="image" name="img" required accept="image/*">
                                 </div>
-                                <button type="submit" name="add-prod-btn" class="btn btn-primary">Add Product</button>
+                                <button type="submit" name="add-prod-btn" class="btn btn-primary">Lưu sản phẩm</button>
                             </div>
                         </form>
                     </div>

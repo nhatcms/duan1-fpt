@@ -218,4 +218,8 @@ class MainController
         $order_details = OrderModel::getOrderDetail($order_code);
         require_once './app/view/order_detail.php';
     }
+    public static function aboutController(){
+        require_once './app/view/gioithieu.php';
+
+    }
 }

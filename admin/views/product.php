@@ -73,8 +73,8 @@ if (isset($_SESSION['alert'])) {
                                             <td><?php echo $product['id']; ?></td>
                                             <td><?php echo htmlspecialchars($product['name']); ?></td>
                                             <td><?php echo htmlspecialchars($product['cate_name']); ?></td>
-                                            <td><?php echo number_format($product['price']); ?> ₫</td>
-                                            <td><?php echo number_format($product['list_price']); ?> ₫</td>
+                                            <td><?php echo $product['price']; ?></td>
+                                            <td><?php echo $product['list_price']; ?></td>
                                             <td>
                                                 <span class="badge <?php echo $product['isActive'] == 1 ? 'bg-success' : 'bg-danger'; ?>">
                                                     <?php echo $product['isActive'] == 1 ? 'Đang bán' : 'Ngừng bán'; ?>
@@ -110,6 +110,7 @@ if (isset($_SESSION['alert'])) {
 <!-- End Footer  -->
 
 <!-- Page specific script -->
+ 
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -127,6 +128,7 @@ if (isset($_SESSION['alert'])) {
     });
   });
 </script>
+
 </body>
 
 </html>

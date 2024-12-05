@@ -455,7 +455,11 @@
                             <input type="hidden" name="name" value="<?php echo $product['name']; ?>"> <!-- Tên sản phẩm -->
                             <input type="hidden" name="img" value="<?php echo $product['img']; ?>"> <!-- Ảnh sản phẩm -->
                             <input type="hidden" name="price" value="<?php echo $product['price']; ?>"> <!-- Giá sản phẩm -->
-                            <button type="button" id="addToCartBtn" class="btn btn-dark" style="width: 100%; display: block; margin: 0 auto;">Thêm vào giỏ hàng</button>
+                            <?php if ($product['isActive'] == 0): ?>
+                                <button type="button" class="btn btn-dark" style="width: 100%; display: block; margin: 0 auto;" disabled>Sản phẩm đã ngừng kinh doanh</button>
+                            <?php else: ?>
+                                <button type="button" id="addToCartBtn" class="btn btn-dark" style="width: 100%; display: block; margin: 0 auto;">Thêm vào giỏ hàng</button>
+                            <?php endif; ?>
                         </form>
 
                         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert2 -->

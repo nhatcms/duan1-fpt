@@ -56,10 +56,10 @@ require './views/sidebar.php'
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Product name</th>
-                                        <th>User</th>
-                                        <th>Comment</th>
-                                        <th>Active</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Người post</th>
+                                        <th>Nội dung</th>
+                                        <th>Hành động</th>
 
                                     </tr>
                                 </thead>
@@ -74,13 +74,13 @@ require './views/sidebar.php'
                                         // post user
                                         echo "<td>";
                                         // view button
-                                        echo "<a href='?action=editProduct&id={$comment['product_id']}' class='btn btn-success btn-sm'  target='_blank'>Xem SP</a>";
-                                        echo "<a href='?action=deleteComment&id={$comment['id']}' class='btn btn-danger btn-sm ms-1 delete-btn'>Delete</a>";
+                                        echo "<a href='../?action=product&id={$comment['product_id']}' class='btn btn-success btn-sm'  target='_blank'>Xem SP</a>";
+                                        echo "<a href='?action=deleteComment&id={$comment['id']}' class='btn btn-danger btn-sm ms-1 delete-btn'>Xoá</a>";
                                         echo "</td>";
                                         echo "</tr>";
                                     }
                                 } else {
-                                    echo "<tr><td colspan='3'>No comments available.</td></tr>";
+                                    echo "<tr><td colspan='3'>Không có comment nào để hiển thị.</td></tr>";
                                 }
                                 ?>
                             </tbody>

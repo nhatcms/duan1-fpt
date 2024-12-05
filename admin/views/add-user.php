@@ -39,11 +39,11 @@ require './views/sidebar.php'
                         <form action="?action=addUser" method="post">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="username" class="form-label">Username:</label>
+                                    <label for="username" class="form-label">Tên người dùng:</label>
                                     <input type="text" class="form-control" id="username" name="username" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="realname" class="form-label">Real Name:</label>
+                                    <label for="realname" class="form-label">Họ và tên:</label>
                                     <input type="text" class="form-control" id="realname" name="realname" required>
                                 </div>
                                 <div class="form-group">
@@ -51,32 +51,31 @@ require './views/sidebar.php'
                                     <input type="email" class="form-control" id="email" name="email" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="phoneNumber" class="form-label">Phone Number:</label>
+                                    <label for="phoneNumber" class="form-label">Số điện thoại:</label>
                                     <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password" class="form-label">Password:</label>
+                                    <label for="password" class="form-label">Mật khẩu:</label>
                                     <input type="password" class="form-control" id="password" name="password" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="confirm_password" class="form-label">Confirm Password:</label>
+                                    <label for="confirm_password" class="form-label">Mật khẩu nhập lại:</label>
                                     <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="role" class="form-label">Role:</label>
+                                    <label for="role" class="form-label">Vai trò:</label>
                                     <select class="form-control" id="role" name="role" required>
                                         <option value="1">Admin</option>
-                                        <option value="2">Editor</option>
                                         <option value="3" selected>User</option>
                                     </select>
                                 </div>
                                 <div class="form-check mb-3">
                                     <input type="checkbox" class="form-check-input" id="isActive" name="isActive" value="1" checked>
-                                    <label class="form-check-label" for="isActive">Is Active</label>
+                                    <label class="form-check-label" for="isActive">Hoạt động</label>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary w-100">Save</button>
+                                <button type="submit" class="btn btn-primary w-100">Lưu</button>
                             </div>
                         </form>
                     </div>
