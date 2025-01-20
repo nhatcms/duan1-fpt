@@ -47,7 +47,8 @@
 
 ### Mua Hàng
 - Duyệt qua các sản phẩm, chọn sản phẩm yêu thích và thêm vào giỏ hàng.
-- Điền thông tin thanh toán và lựa chọn phương thức thanh toán.
+- Điền thông tin thanh toán
+- Lựa chọn phương thức thanh toán: COD hoặc VNPay
 - Xác nhận đơn hàng và nhận thông tin đơn hàng qua email.
 
 ### Quản Lý Sản Phẩm
